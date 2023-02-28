@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.main_menu{
+    width: 100%;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.main_menu > li{
+    width: 20%;
+    float: left;
+    text-align: center;
+    line-height: 30px; /*메뉴의 높이*/
+    background-color: white;
+}
+
+.main_menu > a{
+color: black;
+}
+
+.sub_menu >li{
+    line-height: 50px;
+    background-color: pink;
+}
+
+.sub_menu{
+    height: 0;
+    overflow: hidden;
+}
+
+.main_menu > li:hover{
+    background-color: pink;
+    transition-duration:0.5s ;
+}
+
+.main_menu >li:hover .sub_menu{
+    height: 250px;
+    transition-duration: 1s;
+}
+
+.main_menu>li:hover .sub_menu {
+    height: 250px;
+    transition-duration: 1s;
+}
+
+.main_menu>li:hover .sub_menu >li:hover {
+    line-height: 50px;
+    background-color: palevioletred;
+    transition-duration: 1s;
+}

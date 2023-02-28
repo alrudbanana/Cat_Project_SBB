@@ -1,0 +1,131 @@
+        .container{
+          margin: 0 auto;
+          display: flex; 
+          margin-top: 100px;
+          justify-content: center;
+        }
+
+        section {
+          border: 1px solid rgb(194, 193, 193);
+          width: 1080px;
+          overflow: hidden;
+          padding: 50px;
+        }
+
+        section h2 {
+          font-size: 11px;
+          font-weight: 100px; color: rgba(126, 119, 119,0.9);
+          margin: 10px 0 10px 0;
+          width: 120px;
+          position: relative; right: -900px;
+        }
+
+        #imagesbox{
+          border: 1px solid palegreen;
+          width: 400px;
+          height: 600px;
+          overflow: hidden;
+        }
+
+
+        #c1{
+          width: 650px;
+          padding-left: 20px; padding-top: 10px;
+          position: relative; top: -405px; right: -450px;
+        } 
+
+        #c1 table ,tr, td{
+          padding: 10px;
+          margin: 10px;
+          width: 600px;
+          border-bottom: 1px solid rgba(192, 192, 192,0.5);
+          border-collapse: collapse;
+          text-align: left;
+        }
+        #c1 button {
+          width: 280px;
+          height: 40px;
+          /* margin: 20px 30px 20px 30px; */
+          font-size: 12px;
+        }
+
+        button:hover{
+          background-color: pink;
+         }
+
+        #soldout:hover{
+          background-color:pink;
+         }
+
+         #soldout{
+          background-color: gray;
+          border: none;
+         }
+
+         #love_porduct{
+          border: 1px solid rgba(0, 0, 0,0.4)
+         }
+
+
+        .pic {
+          width: 50px;
+        }
+
+        #lightbox{
+          
+          position: relative;
+          width:450px ; 
+          margin-left: 40px;
+        }
+        #lightboxImage {
+          width: 400px;
+          /* padding: 20px; */
+          /* border: 1px dotted gray; */
+          /* position: absolute; */
+         
+        }
+
+
+        #mins {
+          position: absolute;
+          width: 1000px; left: 450px;
+          /* border: 10px solid rgba(102, 51, 153,0) */
+         
+        }
+
+        .proname{
+          width: 600px;
+        }
+
+        table {
+          border-collapse: collapse;
+        }
+        
+        #blank_box table tr td{
+          position: relative; top:-320px;
+          text-align: center;
+          border: none;
+          width: 700px;
+        }
+
+       .buy_terms table tr td{
+          margin-top: 100px;
+          text-align: left;
+          width: 1100px;
+          font-size: 10px;  
+          font-weight: 100;
+          border-collapse: collapse;
+          } 
+
+          .review_table table tr td{
+            width: 1100px;
+            font-weight: 400;
+            font-size: 12px;
+            border-collapse: collapse;
+            border-style: hidden;
+            
+           }
+
+           .review_table{
+            margin-top: 200px;
+           }

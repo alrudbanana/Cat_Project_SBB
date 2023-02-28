@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+        *{
+            font-size: 12px;
+        }
+        .logo{
+           border: 0.5px solid rgba(128, 128, 128, 0.2);
+           /* padding:10px 0  0 50px;*/
+        }
+        .flex-container {
+            display: inline-flex;
+
+        }
+
+        .flex-container > div{
+            width: 400px;
+            height: 400px;
+            margin: 16px;
+            text-align: center;
+            border: 0.5px solid rgba(128, 128, 128, 0.2);
+        }
+
+        .flex-container img{
+            width: 400px;
+            height: 400px;
+        }
+       
+        .wrap{
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .hover_text{
+            position: absolute;
+            opacity: 0;
+            background-color: rgba(68, 68, 66, 0.139);
+            width: 400px; height: 400px;
+        }
+
+        .product:hover  .hover_text{
+            opacity: 1;
+        }
+
+        .hover_text > li{
+            font-size: 16px;
+            font-weight: 800;
+            font-family: 'NanumSquareNeo-Variable';
+            list-style-type: none;
+            padding: 60px 10px 30px 10px;
+        }
+

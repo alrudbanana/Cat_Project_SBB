@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main_page</title>
+    <script src="includeHTML.js"></script>
+        <link type="text/css" rel="stylesheet" href="../css/banner.css">
+        <link type="text/css" rel="stylesheet" href="../css/weekly_best.css">
+
+    </head>
+
+
+<body>
+    <div include-html="popup.html"></div>
+    <div include-html="top_nav.html"></div>
+    <div include-html="main.html"></div>
+    <div include-html="dropdown_menu.html"></div>
+    <div include-html="main_banner.html"></div>
+    <div include-html="weekly_best.html"></div>
+    <div include-html="footer.html"></div>
+
+
+<script>includeHTML();</script>
+   
+</body>

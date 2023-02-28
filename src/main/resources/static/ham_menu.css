@@ -1,0 +1,179 @@
+.header {
+    height: 70px;
+    border-bottom: 1px solid rgb(222, 226, 230);
+}
+
+/* 헤더 아이콘 스타일 */
+header .bi-heart-fill {
+    font-size: 25px;
+    line-height: 25px;
+    transition-duration: 0.5s;
+}
+
+.bi-person-fill {
+    font-size: 30px;
+    line-height: 30px;
+    transition-duration: 0.5s;
+}
+
+header .bi-person-fill:hover,
+header .bi-heart-fill:hover {
+    color: #444;
+}
+
+.ham-con .bi-search {
+    width: 50px;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #777;
+    background-color: whitesmoke;
+    padding: 5px;
+    border: 1px solid #444;
+    border-left: 0px;
+
+}
+
+.ham-con .bi-caret-up-fill,
+.ham-con .bi-caret-down-fill {
+    color: #444;
+}
+
+/* 햄버거 버튼  스타일*/
+.menu-trigger {
+    margin: 10px 25px;
+}
+
+.menu-trigger:hover span:nth-of-type(1) {
+    background-color: #444;
+}
+
+.menu-trigger:hover span:nth-of-type(2) {
+    background-color: #444;
+}
+
+.menu-trigger:hover span:nth-of-type(3) {
+    background-color: #444;
+}
+
+.menu-trigger,
+.menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+}
+
+.menu-trigger {
+    position: relative;
+    width: 30px;
+    height: 25px;
+}
+
+.menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgb(124, 124, 125);
+    border-radius: 4px;
+}
+
+.menu-trigger span:nth-of-type(1) {
+    top: 0;
+}
+
+.menu-trigger span:nth-of-type(2) {
+    top: 11px;
+}
+
+.menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+}
+
+/* 햄버거 버튼 이벤트 */
+.menu-trigger.active-1 span:nth-of-type(1) {
+    -webkit-transform: translateY (10px) rotate (-45deg);
+    transform: translateY(10px) rotate(-45deg);
+}
+
+.menu-trigger.active-1 span:nth-of-type(2) {
+    opacity: 0;
+}
+
+.menu-trigger.active-1 span:nth-of-type(3) {
+    -webkit-transform: translateY(-10px) rotate(45deg);
+    transform: translateY(-10px) rotate(45deg);
+}
+
+/* 햄버거 메뉴 디자인 */
+.ham-con {
+    width: 30%;
+    height: 1000px;
+    background-color: rgba(224, 224, 224, 0.8);
+    position: fixed;
+    top: 70px;
+    right: -20%;
+    color: #505050;
+    z-index: 99;
+    opacity: 0;
+}
+
+.search-con {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    top: 50px;
+    margin-bottom: 80px;
+    overflow: hidden;
+}
+
+.search-con input {
+    width: 70%;
+    height: 100%;
+    float: left;
+    line-height: 50px;
+    border: 1px solid black;
+}
+
+.ham-menu ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.ham-menu ul.ham-top-menu li {
+    position: relative;
+    float: left;
+    width: 100%;
+    list-style-type: none;
+    font-size: 18px;
+}
+
+.ham-menu ul.ham-top-menu li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-indent: 20px;
+    color: #000;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.ham-menu ul.ham-top-menu li a:hover {
+    background: #eee;
+}
+
+.ham-menu ul.ham-top-menu li .ham-sub-menu a {
+    position: relative;
+    float: left;
+    display: block;
+    width: 100%;
+    z-index: 99;
+    background: #F7F7F7;
+}
+
+.ham-menu ul.ham-top-menu li .ham-sub-menu a:hover {
+    background: #444;
+    color: #fff;
+}

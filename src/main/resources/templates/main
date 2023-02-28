@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인첫화면</title>
+  <link type="text/css" rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">
+    <a href="./index.html"><img src="../img/Main_logo.png"></a>
+  </div>
+  
+    <div class="search_bar">
+      <div class="search">
+      <input type="text" placeholder="       검색어 입력">
+      <img src="../img/btn_search.png">
+      </div>
+    </div>
+</header>
+
+  
+</div>
+
+</body>
+
+</html>

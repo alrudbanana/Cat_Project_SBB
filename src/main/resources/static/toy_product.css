@@ -1,0 +1,92 @@
+.container{
+margin: 0 auto;
+display: flex;
+justify-content: center;
+}
+section{
+width: 1200px;  
+}
+
+.line{
+width: 100%;
+border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+}
+.tittle_p{
+padding: 60px;
+position: relative;
+}
+.mini_menu{
+    position: absolute;
+    top: 10px; right: -10px;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.item_total_nav a:hover{
+color: gray;
+}
+.toy_tittle{
+    text-align: center;
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.toy_select{
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    padding-top:35px;
+    width: 1200px;
+    height: 70px;
+}
+
+.toy_select > div{
+    display: inline-block;
+}
+
+.toy_1{
+border: 1px solid rgba(128, 128, 128, 0.4);
+margin-left: 8px;
+width: 200px;
+padding: 10px;
+}
+
+.toy_1:hover{
+    background-color: rgba(192, 192, 192,0.3);
+}
+.item_total_nav{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.item_total_nav > div{
+    display: inline;
+    margin-right: 10px;
+    float: right;
+    padding-right: 10px;
+    border-right: 1px solid rgba(128, 128, 128, 0.4);
+}
+.nav_name > a{
+    font-size: 11px;
+}
+
+/*테이블 속성값*/
+
+.item_list img {
+    width: 280px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.item_list tr td{
+    padding: 3px;
+    padding-right: 20px;
+
+}
+
+.price{
+    color: rgb(46, 164, 211);
+}
+
+
+
+
+
