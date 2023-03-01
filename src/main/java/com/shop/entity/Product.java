@@ -1,7 +1,5 @@
 package com.shop.entity;
 
-import java.awt.ItemSelectable;
-import java.security.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.shop.constant.ItemSellStatus;
 
 import groovy.transform.ToString;
 import groovy.transform.builder.Builder;
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ import lombok.Setter;
 @ToString
 @NoArgsConstructor 
 @Getter @Setter
-@Entity
+@Entity @Table(name = "product")
 public class Product extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,15 +42,17 @@ public class Product extends BaseEntity {
 	private String description; //상품상세설명
 	
 	
-	@NotNull
+	@NotNull(message = "상품이미지를 넣어야합니다.")
 	private String img_url; //상품 이미지 url
-	@NotNull
+	
+	@NotNull(message = "상품 색을 지정해야 합니다.")
 	private String color; //상품 색
-	@NotNull
+	
+	@NotNull(message = "상품사이지를 지정해야합니다.")
 	private String size; //상품사이즈
 	private int discount; //할인율
 	
-	@NotNull
+	@NotNull(message = "상품재고를 설정해야 합니다.")
 	private int stockNumber; //재고 
 	
 	@Enumerated(EnumType.STRING)

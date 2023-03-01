@@ -1,4 +1,4 @@
-package com.shop.Service;
+package com.shop.service;
 
 public class MemberService {
 
