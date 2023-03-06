@@ -47,10 +47,11 @@ dependencies {
 	//JDBC
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	
+	//validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	
 	//javax : spring boot 2.3 이상에서 사용 설정 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.4' 
-
-
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
 	
 	//MySQL 드라이버 설치
@@ -61,6 +62,10 @@ dependencies {
    implementation 'com.querydsl:querydsl-jpa:5.0.0'
    implementation 'com.querydsl:querydsl-apt:5.0.0'
    implementation 'com.querydsl:querydsl-core:5.0.0' // 한개 더 추가!
+   
+   //spring 시큐리티 (3월6일)
+   implementation 'org.springframework.boot:spring-boot-starter-security'
+ 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 }
 
 tasks.named('test') {
