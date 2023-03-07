@@ -21,6 +21,12 @@ public class IndexController {
 			return "login";
 		}
 		
+		//회원가입 
+//		@RequestMapping(value = "/join")
+//		public String join() {
+//			return "join";
+//		}
+		
 //		//공지사항
 //		@RequestMapping(value = "/notice")
 //		public String notice() {
