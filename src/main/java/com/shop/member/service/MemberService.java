@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,34 +16,45 @@ import org.springframework.stereotype.Service;
 
 import com.shop.member.MemberRole;
 import com.shop.member.dto.MemberFormDto;
-import com.shop.member.entity.Address;
 import com.shop.member.entity.Member;
 import com.shop.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
-public class MemberService {
+public class MemberService implements UserDetailsService  {
 	
 	private final MemberRepository memberRepository;
-	private final PasswordEncoder passwordEncoder;
 	
-	public void save(MemberFormDto memberFormDto) {
-		
-		Member member = new Member();
-		member.setUsersId(memberFormDto.getUsersId());
-		member.setName(memberFormDto.getName());
-		member.setPassword(this.passwordEncoder.encode(memberFormDto.getPassword()));
-		member.setEmail(memberFormDto.getEmail());
-		member.setAddress(new Address());
-		
-		this.memberRepository.save(member);
-		
+	 public Member saveMember(Member member){
+	        validateDuplicateMember(member);
+	        
+	        return memberRepository.save(member);
+	    }
+
+	    private void validateDuplicateMember(Member member){
+	        Member findMember = memberRepository.findByEmail(member.getEmail());
+	        if(findMember != null){
+	            throw new IllegalStateException("이미 가입된 회원입니다.");
+	        }
+	    }
+
+	    @Override
+	    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+	        Member member = memberRepository.findByEmail(email);
+
+	        if(member == null){
+	            throw new UsernameNotFoundException(email);
+	        }
+
+	        return User.builder()	        		
+	                .username(member.getEmail())
+	                .password(member.getPassword())
+	                .roles(member.getRole().toString())
+	                .build();
+	    }
+
 	}
-	
-	//로그인을 처리하는 메소드 
-	//user : 
-	//오버라이딩 된 메소드 이므로 수정 불가 
-	
-}

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	//홈
 	
-		@RequestMapping(value = "/")
-		public String index() {
-			
-			return "index";
-		}
+//		@RequestMapping(value = "/")
+//		public String index() {
+//			
+//			return "index";
+//		}
 		
 		
 //		로그인
-	
-		@RequestMapping(value = "/login")
-		public String login() {
-			return "login";
-		}
+//	
+//		@RequestMapping(value = "/login")
+//		public String login() {
+//			return "login";
+//		}
 		
 		//회원가입 
 //		@RequestMapping(value = "/join")

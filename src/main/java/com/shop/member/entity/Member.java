@@ -1,7 +1,6 @@
 package com.shop.member.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.OverridesAttribute;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -28,19 +27,21 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "member_id")
-    private Long id;
-
-    private String usersId;
-    private String name;
+    private Long id; //자동으로 늘어나는값
+    
+    private String usersId; //아이디 
+    private String name; 
     @Column(unique = true)
     private String email;
-
+    @NotEmpty
     private String password;
-
-    @Embedded
-    private Address address;
     
-
+    @NotEmpty
+    private String zipcode;
+    @NotEmpty
+    private String streetAdr;
+    private String detailAdr;
+   
     @Enumerated(EnumType.STRING)
     private MemberRole role;
     
@@ -50,7 +51,11 @@ public class Member {
         member.setUsersId(memberFormDto.getUsersId());
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
-        member.setAddress(memberFormDto.getAddress());
+        //주소 
+        member.setZipcode(memberFormDto.getZipcode());
+        member.setStreetAdr(memberFormDto.getStreetAdr());
+        member.setDetailAdr(memberFormDto.getDetailAdr());
+        
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
         member.setRole(MemberRole.ADMIN);

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shop.member.dto.MemberFormDto;
-import com.shop.member.entity.Address;
 import com.shop.member.entity.Member;
 import com.shop.member.service.MemberService;
 
@@ -21,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
+	
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
     //회원가입
@@ -30,18 +30,29 @@ public class MemberController {
         return "join";
     }
     
-    @PostMapping(value = "/join")
+   @PostMapping("/joina")
+    public String test(Model model, MemberFormDto memberFormDto) {
+    	try {
+    		this.memberService.saveMember(memberFormDto);
+    	}catch(Exception e) {
+    		return "join";
+    		
+    	}
+    	return "redirect:/"; 
+    }
+    
+/*
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+       
+    	System.out.println("컨트롤러 호출됨 ");
+    	System.out.println(memberFormDto.getName());
+    	
+    	if(bindingResult.hasErrors()){
             return "join";
         }
-
-       if(!memberFormDto.getPassword().equals(memberFormDto.getPassword2())) {
-    	   bindingResult.rejectValue("password", "password2", "비밀번호가 일치하지 않습니다.");
-    	   return "join";
-       }
        try {
-    	   this.memberService.save(memberFormDto);
+    	   Member member = Member.createMember(memberFormDto, passwordEncoder);
+    	   memberService.saveMember(member);
        }catch(Exception e) {
     	   model.addAttribute("save_errors","아이디 혹은 이메일 중복");
     	   return "join";
@@ -49,11 +60,16 @@ public class MemberController {
 
         return "redirect:/";
     }
-
+ */   
     @GetMapping(value = "/login")
     public String loginMember(){
         return "login";
     }
 
+    @GetMapping(value = "/login/error")
+    public String loginError(Model model){
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
+        return "login";
+    }
 
 }
