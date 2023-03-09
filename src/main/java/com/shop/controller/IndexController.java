@@ -13,11 +13,11 @@ public class IndexController {
 //			return "index";
 //		}
 
-	
-		@RequestMapping(value = "/community")
-		public String login() {
-			return "community";
-		}
+//	
+//		@RequestMapping(value = "/member/community")
+//		public String login() {
+//			return "community";
+//		}
 		
 		//회원가입 
 //		@RequestMapping(value = "/join")

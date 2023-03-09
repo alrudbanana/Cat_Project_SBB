@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커뮤니티</title>
+<!--폰트-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link th:href="@{/css/index.css}" rel="stylesheet">
+
+<style>
+	/* 메인 CSS */
+#banner {
+	margin: 30px 0;
+}
+
+#tb {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 14px;
+	color: rgb(126, 124, 124);
+	border-bottom: 1px solid rgb(219, 218, 218);
+}
+
+#subject {
+	border-top: 1px solid rgb(219, 218, 218);
+	border-bottom: 1px solid rgb(219, 218, 218);
+	background-color: rgb(247, 245, 245);
+}
+
+#tb td {
+	/* border: 1px solid red; */
+	
+}
+
+#tb_num {
+	padding: 10px;
+	width: 90px;
+}
+
+#tb_name {
+	
+}
+
+#tb_man {
+	width: 90px;
+}
+
+#tb_date {
+	width: 150px;
+}
+
+#num {
+	padding: 10px;
+}
+
+#name {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#menu1 {
+	color: rgb(126, 124, 124);
+	padding: 10px;
+	margin: 30px 0;
+}
+#menu1 li {
+
+	display : inline-block;
+	margin: 20px 7px 0 7px;
+	font-size:14px;
+}
+.q_btn{
+	padding : 2px 10px;
+	border: 1px solid rgb(219, 218, 218);
+	border-radius: 5px;
+	font-size:14px;
+	background-color: rgb(247, 245, 245);
+
+	position: absolute;
+	right:20px;
+
+	bottom: 120px; 
+}
+
+#sub{
+	text-align: left;
+	
+	}
+
+
+
+#menu2 {
+	/* border: 1px solid red; */
+	margin: 40px 0 100px 0;
+	height: 30px;
+	/* float: left; */
+}
+
+#select_date {
+	position: absolute;
+}
+
+#select_name {
+	position: absolute;
+	left: 90px;
+}
+
+#select_input {
+	position: absolute;
+	left: 165px;
+}
+
+#select_search {
+	position: absolute;
+	left: 330px;
+}
+
+#menu2 button {
+	width: 70px;
+	background-color: rgb(177, 176, 176);
+	color: white;
+	border: 1px solid;
+}
+
+select {
+	border: 1px solid rgb(161, 160, 160);
+}
+
+#menu2 input {
+	border: 1px solid rgb(161, 160, 160);
+}
+
+.answer_num{
+	color: blue;
+	
+	
+	font-size:12px;
+	margin-left:5px;
+}
+
+	
+</style>
+</head>
+
+<body>
+<th:block layout:fragment="content">
+			<div id="container">
+				
+				<table id="tb">
+					<tr id="subject">
+						<td id="tb_num">번호</td>
+						<td id="tb_name">제목</td>
+						<td id="tb_man"></td>
+						<td id="tb_date">작성일</td>
+					</tr>
+					
+					
+					<tr th:each="board, loop : ${paging}">
+						<td id="board_id"
+							th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}">
+ 						
+						<!-- 제목 -->
+						<td id="sub">
+						 <a th:href="@{|/board/${board.id}|}"
+							th:text="${board.subject}"></a></td>
+						<td></td>
+						
+						<!--날짜 수정 예정-->
+						<td
+							th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+							
+
+					</tr>
+
+				</table>
+
+
+				<!-- 페이징처리 시작 -->
+    <div th:if="${!paging.isEmpty()}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                <a class="page-link"
+                    th:href="@{|?page=${paging.number-1}|}">
+                    <span>이전</span>
+                </a>
+            </li>
+            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                th:classappend="${page == paging.number} ? 'active'" 
+                class="page-item">
+                <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+                    <span>다음</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 페이징처리 끝 -->
+				<!-- 질문 등록하기 -->
+				<a th:href="@{/community/write}" class="q_btn">질문 등록하기</a>
+
+
+				<div id="menu2">
+					<div id="select_date">
+						<select style="padding: 2px; width: 80px;">
+							<option>일주일</option>
+							<option>한달</option>
+							<option>세달</option>
+							<option>전체</option>
+						</select>
+					</div>
+					<div id="select_name">
+						<select style="padding: 2px;">
+							<option>제목</option>
+							<option>내용</option>
+							<option>글쓴이</option>
+							<option>아이디</option>
+							<option>별명</option>
+						</select>
+					</div>
+					<div id="select_input">
+						<input type="text" style="width: 160px; padding: 3px;">
+					</div>
+					<div id="select_search">
+						<button type="button" style="padding: 2px;">찾기</button>
+					</div>
+				</div>
+
+
+
+
+
+
+
+			</div>
+
+
+
+
+</th:block>
+</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.shop.DataNotFoundException;
 import com.shop.member.MemberRole;
 import com.shop.member.dto.MemberFormDto;
 import com.shop.member.entity.Member;
@@ -40,6 +41,17 @@ public class MemberService implements UserDetailsService  {
 	        this.memberRepository.save(member);
 	    }
 
+	 
+	//로그인한 사용자명 가져오기 
+		public Member getMember(String email ) {
+			Optional<Member> member = this.memberRepository.findByEmail(email);
+			 if (member.isPresent()) {
+		            return member.get();
+		        } else {
+		            throw new DataNotFoundException("siteuser not found");
+		        }
+			
+		}
 
 	    @Override
 	    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

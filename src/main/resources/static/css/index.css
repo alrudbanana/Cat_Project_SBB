@@ -189,12 +189,12 @@ footer a:visited {
     color: #808080;
 }
 
-footer p {
+footer #f_p {
     margin-top: 0;
     margin-bottom: 0;
 }
 
-footer p span {
+footer #f_p span {
     display: inline-block;
     margin: 0 20px 10px 20px;
 
