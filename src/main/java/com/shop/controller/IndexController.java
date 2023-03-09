@@ -12,14 +12,12 @@ public class IndexController {
 //			
 //			return "index";
 //		}
-		
-		
-//		로그인
-//	
-//		@RequestMapping(value = "/login")
-//		public String login() {
-//			return "login";
-//		}
+
+	
+		@RequestMapping(value = "/community")
+		public String login() {
+			return "community";
+		}
 		
 		//회원가입 
 //		@RequestMapping(value = "/join")

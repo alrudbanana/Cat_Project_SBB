@@ -8,24 +8,20 @@
   <div class="top_nav">
     <div class="t_menu">
         <ul>
-            <li><a href="member/login">로그인</a></li>|
-            <li><a href="member/join">회원가입</a></li>|
-            <li><a href="#">장바구니</a></li>|
-            <li><a href="#">주문조회</a></li>|
-            <li><a href="#">마이페이지</a></li>
+            <li><a sec:authorize="isAnonymous()" href="/member/login">로그인</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="/member/logout">로그아웃</a></li>
+            <li><a a sec:authorize="isAnonymous()"href="member/join">회원가입</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="#">장바구니</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="#">주문조회</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="#">마이페이지</a></li>
         </ul>
     </div>
-    
-    <div class="sns_logo">
-        <a href="#"><img class="cart" src="img/cart.png"></a> 
-        <a href="#"><img class="my_page" src="img/my_page.png"></a>   
-        <a href="#"><img class="top_logout" src="img/top_logout.png"></a>
-    </div>   
+
 
     <div class="right_menu">
         <ul>
-        <a href="#"><li>포토리뷰</li>|</a>
-        <a href="#"><li>커뮤니티</li>|</a>   
+        <a href="/member/photoreview"><li>포토리뷰</li>|</a>
+        <a href="/member/community"><li>커뮤니티</li>|</a>   
         </ul>
     </div>
 </div>

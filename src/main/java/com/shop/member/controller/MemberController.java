@@ -1,6 +1,6 @@
 package com.shop.member.controller;
 
-import javax.validation.Valid;
+
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import com.shop.member.dto.MemberFormDto;
 import com.shop.member.entity.Member;
 import com.shop.member.service.MemberService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/member")
@@ -23,17 +24,24 @@ public class MemberController {
 	
     private final MemberService memberService;
 
-    //로그인 
-    @GetMapping(value = "/login")
-    public String loginMember(){
-        return "login";
-    }
-
-    //회원가입
+    //회원가입 뷰 페이지 출력
     @GetMapping(value = "/join")
     public String memberForm(Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "join";
+    }
+    
+    //로그인 
+    @GetMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
+
+    
+    @GetMapping(value = "/login/error")
+    public String loginError(Model model){
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
+        return "login";
     }
     
 //   @PostMapping("/join")
@@ -70,10 +78,6 @@ public class MemberController {
     }
  
     
-    @GetMapping(value = "/login/error")
-    public String loginError(Model model){
-        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "login";
-    }
+   
 
 }

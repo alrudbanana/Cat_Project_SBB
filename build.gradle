@@ -1,14 +1,12 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.9'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	//querydsl 추가 
-	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+	id 'org.springframework.boot' version '3.0.4'
+	id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'com.mysite'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -21,54 +19,24 @@ repositories {
 }
 
 dependencies {
-	//기본설정
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.security:spring-security-test'
 	
-	//타임리프 추가 
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    
-    //타임리프 레이아웃 Dependency 추가
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-    
-	//마크다운
-	implementation 'org.commonmark:commonmark:0.21.0'
+	 implementation 'com.mysql:mysql-connector-j'
 	
-	//JPA 라이브러리 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	
-	//Oracle라이브러리
-	implementation 'com.oracle.database.jdbc:ojdbc11'
-	
-	//JDBC
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	
-	//validation
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	
-	//javax : spring boot 2.3 이상에서 사용 설정 
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.4' 
-	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
-	
-	//MySQL 드라이버 설치
-    implementation 'com.mysql:mysql-connector-j'
-    
-    
-	// QueryDSL
-   implementation 'com.querydsl:querydsl-jpa:5.0.0'
-   implementation 'com.querydsl:querydsl-apt:5.0.0'
-   implementation 'com.querydsl:querydsl-core:5.0.0' // 한개 더 추가!
-   
-   //spring 시큐리티 (3월6일)
-   	implementation 'org.springframework.boot:spring-boot-starter-security'
-   	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
-

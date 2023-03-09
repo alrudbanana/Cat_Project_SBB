@@ -1,19 +1,14 @@
 package com.shop.member.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.shop.member.MemberRole;
-import com.shop.member.dto.MemberFormDto;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +26,8 @@ public class Member {
     
     private String usersId; //아이디 
     private String name; 
+    
+    @Email
     @Column(unique = true)
     private String email;
     @NotEmpty

@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -46,7 +44,6 @@ public class MemberService implements UserDetailsService  {
 	    @Override
 	    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 	    	System.out.println(email); //콘솔에 정보를 출력함 : 개발 완료 시는 제거함 
-			
 			Optional<Member> _Member=this.memberRepository.findByEmail(email);
 			
 			if(_Member.isEmpty()) {

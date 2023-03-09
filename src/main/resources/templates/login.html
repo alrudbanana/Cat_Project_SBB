@@ -2,6 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     	
       >
 <head>
   <meta charset="UTF-8">
@@ -11,33 +12,37 @@
   
   <link rel="stylesheet" href="/css/login.css">
   <script src="login.js"></script>
-  <style>
-
-
-  </style>
 </head>
-<body>
+
   <section class="login-form">
     <h1>LOGIN</h1>
     <form th:action="@{/member/login}" method="post">
+    
+    	<div th:if="${param.error}">
+            <div class="alert alert-danger">
+                사용자ID 또는 비밀번호를 확인해 주세요.
+            </div>
+        </div>
+        
       <div class="int-area">
-        <input type="text" name="id" id="id" autocomplete="off" required>
+        <input type="text" name="username" id="email" class="form-control" autocomplete="off" required>
         <label for="id">ID</label>
       </div>
+      
       <div class="int-area">
-        <input type="password" name="password" id="pw"
-        autocomplete="off" required>
+        <input type="password" name="password" id="password" class="form-control" autocomplete="off" required>
         <label for="pw">PW</label>
-
       </div>
 
       <div class="btn-area">
         <button type="submit">LOGIN</button>
       </div>
+      
     </form>
+    
     <div class="caption">
       <a href="">비밀번호 찾기</a>
     </div>
+    
   </section>
-</body>
 </html>
