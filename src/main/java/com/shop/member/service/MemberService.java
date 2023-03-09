@@ -22,39 +22,53 @@ import com.shop.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService  {
 	
+	private final PasswordEncoder passwordEncoder;
 	private final MemberRepository memberRepository;
 	
-	 public Member saveMember(Member member){
-	        validateDuplicateMember(member);
+	 public void save(MemberFormDto memberFromDto){
+		 	Member member = new Member();
+		 	
+		 	member.setUsersId(memberFromDto.getUsersId()); //아이디 
+		 	member.setName(memberFromDto.getName()); //이름 
+		 	member.setPassword(this.passwordEncoder.encode(memberFromDto.getPassword()));
+		 	member.setEmail(memberFromDto.getEmail());//이메일
+		 	member.setZipcode(memberFromDto.getZipcode()); //주소 -1
+		 	member.setStreetAdr(memberFromDto.getStreetAdr()); //주소 -2
+		 	member.setDetailAdr(memberFromDto.getDetailAdr()); //주소 -3
 	        
-	        return memberRepository.save(member);
+	        this.memberRepository.save(member);
 	    }
 
-	    private void validateDuplicateMember(Member member){
-	        Member findMember = memberRepository.findByEmail(member.getEmail());
-	        if(findMember != null){
-	            throw new IllegalStateException("이미 가입된 회원입니다.");
-	        }
-	    }
 
 	    @Override
 	    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-	        Member member = memberRepository.findByEmail(email);
-
-	        if(member == null){
-	            throw new UsernameNotFoundException(email);
-	        }
-
-	        return User.builder()	        		
-	                .username(member.getEmail())
-	                .password(member.getPassword())
-	                .roles(member.getRole().toString())
-	                .build();
+	    	System.out.println(email); //콘솔에 정보를 출력함 : 개발 완료 시는 제거함 
+			
+			Optional<Member> _Member=this.memberRepository.findByEmail(email);
+			
+			if(_Member.isEmpty()) {
+				
+				System.out.println("비어있음");
+				throw new UsernameNotFoundException("사용자를 찾을수 없습니다.");
+				
+			}
+			
+			Member member = _Member.get();
+			
+			List<GrantedAuthority> authorities = new ArrayList<>();
+			
+			if("admin".equals(email)) {
+				authorities.add(new SimpleGrantedAuthority(MemberRole.ADMIN.getValue()));
+			}else {
+				authorities.add(new SimpleGrantedAuthority(MemberRole.USER.getValue()));
+			}
+			
+	        	
+	    	
+	    	return new User(member.getEmail(),member.getPassword(),authorities);
 	    }
 
 	}

@@ -22,7 +22,13 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 	
     private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
+
+    //로그인 
+    @GetMapping(value = "/login")
+    public String loginMember(){
+        return "login";
+    }
+
     //회원가입
     @GetMapping(value = "/join")
     public String memberForm(Model model){
@@ -30,18 +36,18 @@ public class MemberController {
         return "join";
     }
     
-   @PostMapping("/joina")
-    public String test(Model model, MemberFormDto memberFormDto) {
-    	try {
-    		this.memberService.saveMember(memberFormDto);
-    	}catch(Exception e) {
-    		return "join";
-    		
-    	}
-    	return "redirect:/"; 
-    }
+//   @PostMapping("/join")
+//    public String test(Model model, MemberFormDto memberFormDto) {
+//    	try {
+//    		this.memberService.saveMember(memberFormDto);
+//    	}catch(Exception e) {
+//    		return "join";
+//    		
+//    	}
+//    	return "redirect:/"; 
+//    }
     
-/*
+    @PostMapping("/join")
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
        
     	System.out.println("컨트롤러 호출됨 ");
@@ -50,9 +56,11 @@ public class MemberController {
     	if(bindingResult.hasErrors()){
             return "join";
         }
+    	
        try {
-    	   Member member = Member.createMember(memberFormDto, passwordEncoder);
-    	   memberService.saveMember(member);
+    	 
+    	  this.memberService.save(memberFormDto);
+    	  
        }catch(Exception e) {
     	   model.addAttribute("save_errors","아이디 혹은 이메일 중복");
     	   return "join";
@@ -60,12 +68,8 @@ public class MemberController {
 
         return "redirect:/";
     }
- */   
-    @GetMapping(value = "/login")
-    public String loginMember(){
-        return "login";
-    }
-
+ 
+    
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");

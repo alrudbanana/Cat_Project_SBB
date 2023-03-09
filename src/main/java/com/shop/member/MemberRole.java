@@ -1,5 +1,15 @@
 package com.shop.member;
 
+import lombok.Getter;
+
+@Getter
 public enum MemberRole {
-	USER, ADMIN
+	ADMIN("ROLE_ADMIN"),
+	USER("ROLE_USER");
+	
+	MemberRole(String value){
+		this.value=value;
+	}
+	
+	private String value;
 }

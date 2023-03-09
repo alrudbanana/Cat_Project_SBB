@@ -36,30 +36,13 @@ public class Member {
     @NotEmpty
     private String password;
     
+    //주소 
     @NotEmpty
     private String zipcode;
     @NotEmpty
     private String streetAdr;
     private String detailAdr;
    
-    @Enumerated(EnumType.STRING)
-    private MemberRole role;
-    
-    
-    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
-        Member member = new Member();
-        member.setUsersId(memberFormDto.getUsersId());
-        member.setName(memberFormDto.getName());
-        member.setEmail(memberFormDto.getEmail());
-        //주소 
-        member.setZipcode(memberFormDto.getZipcode());
-        member.setStreetAdr(memberFormDto.getStreetAdr());
-        member.setDetailAdr(memberFormDto.getDetailAdr());
-        
-        String password = passwordEncoder.encode(memberFormDto.getPassword());
-        member.setPassword(password);
-        member.setRole(MemberRole.ADMIN);
-        return member;
 
     }
-}
+
