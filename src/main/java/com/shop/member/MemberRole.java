@@ -11,5 +11,6 @@ public enum MemberRole {
 		this.value=value;
 	}
 	
+	private String key;
 	private String value;
 }
