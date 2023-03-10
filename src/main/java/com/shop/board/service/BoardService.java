@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.shop.DataNotFoundException;
 import com.shop.board.Board;
 import com.shop.board.repository.BoardRepository;
 import com.shop.member.entity.Member;
@@ -40,7 +41,17 @@ public class BoardService {
 		;
 		
 	}
-	
+	//id값으로 글 데이터 조회
+	 public Board getBoard(Integer id) {  
+	        Optional<Board> board = this.boardRepository.findById(id);
+	        if (board.isPresent()) {
+	            return board.get();
+	        } else {
+	            throw new DataNotFoundException("question not found");
+	        }
+	    }
+
+	 
 	//페이징처리 
 	 public Page<Board> getList(int page) {
 		 List<Sort.Order> sorts = new ArrayList<>();

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+<link th:href="@{/css/index.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>글상세보기</title>
+<style>
+h1 {
+	font-size: 25px;
+	margin: 50px 0;
+}
+
+#container{
+border: 1px solid rgb(161, 160, 160);
+width:1200px;
+text-align: center;
+}
+
+#sub_line {
+	border: 1px solid rgb(161, 160, 160);
+	width: 1200px;
+	margin: 50px 10px 20px 0;
+}
+
+h5 {
+	color: rgb(98, 98, 98);
+	margin: 100px 0 30px 0;
+}
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#main {
+	overflow: hidden;
+	/* border: 1px solid green; */
+	/* background-color: rgb(243, 231, 233); */
+}
+</style>
+</head>
+<body>
+<th:block layout:fragment="content">
+		<!-- 메인시작 -->
+		<section id="main">
+		<div id="container">
+			<table class="board_detail">
+				<colgroup>
+					<col width="15%"/>
+					<col width="35%"/>
+					<col width="15%"/>
+					<col width="35%"/>
+				</colgroup>
+				<tr>
+					<td style="border:1px solid rgb(161, 160, 160)" scope:"row">글번호</td>
+					<td th:text="${board.id}"></td>
+				</tr>
+				<tr>
+					<th scope:"row">작성자</th>
+					<td th:text="${board.author}"></td>
+					<th scope:"row">작성일</th>
+					<td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+					
+				</tr>
+				
+				<tr>
+					<th scope:"row">제목</th>
+					<td colspan="3">
+					<h1 th:text="${board.subject}"></h1>
+					</td>
+					
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td colspan="3" th:text="${board.content}" id="con")></td>
+				</tr>
+				<tr>
+					<th>글 작성일</th>
+					<td colspan="3"
+						th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}">
+				</td>
+				</tr>
+				
+				</table>
+				
+				<div id="sub_line">
+				
+				</div>
+			
+		</section>
+		
+		</th:block>
+</body>
+</html>

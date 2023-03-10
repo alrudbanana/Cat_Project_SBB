@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +35,14 @@ public class BoardController {
 		model.addAttribute("paging", paging);
 		
 		return "/board/community";
+	}
+	//글 상세보기 
+	//컨트롤러에서 호출시 객체를 템플릿에 전달 
+	@GetMapping(value="/board/{id}")
+	public String detail(Model model, @PathVariable("id") Integer id) {
+		Board board = this.boardService.getBoard(id);
+		model.addAttribute("board", board);
+		return "board/communityDetail";
 	}
 	
 	//글쓰기 폼 전달

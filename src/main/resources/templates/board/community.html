@@ -38,11 +38,12 @@
 
 #tb_num {
 	padding: 10px;
-	width: 90px;
+	width: 80px;
+	
 }
 
 #tb_name {
-	
+	width:280px;
 }
 
 #tb_man {
@@ -73,17 +74,15 @@
 	margin: 20px 7px 0 7px;
 	font-size:14px;
 }
+
 .q_btn{
-	padding : 2px 10px;
+	padding:5px;
 	border: 1px solid rgb(219, 218, 218);
-	border-radius: 5px;
+	border-radius: 7px;
 	font-size:14px;
 	background-color: rgb(247, 245, 245);
-
 	position: absolute;
 	right:20px;
-
-	bottom: 120px; 
 }
 
 #sub{
@@ -142,6 +141,12 @@ select {
 	margin-left:5px;
 }
 
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 	
 </style>
 </head>
@@ -154,7 +159,7 @@ select {
 					<tr id="subject">
 						<td id="tb_num">번호</td>
 						<td id="tb_name">제목</td>
-						<td id="tb_man"></td>
+						<td id="tb_man">작성자</td>
 						<td id="tb_date">작성일</td>
 					</tr>
 					
@@ -199,11 +204,11 @@ select {
                 </a>
             </li>
         </ul>
+        
     </div>
-    <!-- 페이징처리 끝 -->
-				<!-- 질문 등록하기 -->
-				<a th:href="@{/community/write}" class="q_btn">질문 등록하기</a>
-
+     <!-- 페이징처리 끝 -->
+    <!-- 질문 등록하기 -->
+    <form type="button" class="q_btn"><a th:href="@{/community/write}">글 등 록</a></form>
 
 				<div id="menu2">
 					<div id="select_date">
@@ -218,7 +223,7 @@ select {
 						<select style="padding: 2px;">
 							<option>제목</option>
 							<option>내용</option>
-							<option>글쓴이</option>
+							<option>작성자</option>
 							<option>아이디</option>
 							<option>별명</option>
 						</select>
