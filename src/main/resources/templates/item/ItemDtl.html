@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product_detail</title>
+    <link rel="stylesheet" href="../css/product_detail.css">
+</head>
+
+<body>
+<th:block layout:fragment="content">
+    <div class="wrap">
+        <div class="container"> 
+           <section>
+            <h2>
+                홈 > 장난감 > 막대장난감
+            </h2>
+
+            <div id="lightbox">
+                <img src="../img/week1.jpg" alt="" id="lightboxImage">
+            </div>
+
+            <!-- <div id="mins">
+                <img src="../img/깃털상세1.jpg" data-src="../img/깃털상세1.jpg" class="pic">
+                <img src="../img/깃털상세2.jpg" data-src="../img/깃털상세2.jpg" class="pic">
+                <img src="../img/깃털상세3.jpg" data-src="../img/깃털상세3.jpg" class="pic">
+            </div> -->
+
+            <div id="c1">
+               
+                <table>
+                    <tr>
+                        <td colspan= "3"; text-align="center"; style="
+                            margin-bottom: 10px;
+                            width: 400px; font-size: 15px; font-weight: 800; ">
+                            쥬아펫 1m 왕타조깃털 고양이장난감</td>
+                    </tr>
+                    <tr text-align="center";  style="color: rgb(115, 144, 224);">
+                        <td colspan= "3"; style="font-size: 25px; font-weight: 200;" >15,900원</td>
+                    </tr>
+
+                    <tr>
+                       <td>국내·해외배송</td> <td>국내배송</td>
+                    </tr>
+
+                    <tr>
+                        <td>배송방법</td><td>택배</td>
+                    </tr>
+                    <tr>
+                        <td>브랜드</td> <td>자체브랜드</td>
+                    </tr>
+                   
+                </table>
+
+                <table>
+                        <tr>
+                            <td style="width: 100px;">옵션</td>
+                            <td><select  style="width: 450px;">
+                                <option>- [필수] 옵션을 선택해 주세요 -</option>
+                                <option>- ------- -</option>
+                                <option>- 1m 왕타조깃털 [품절] -</option>
+                            </select></td>
+                        </tr>
+                </table>
+
+                <table class="proname">
+                        <tr>
+                            <td>상품명</td><td>수량</td><td>가격</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: right;">0(0ea)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: right; font-size: 11px; color: rgb(123, 123, 123,0.4);">(최소 주문수량 1개 이상)</td>
+                        </tr>
+                </table>
+
+                <table>
+                        <tr>
+                            <td><button type="button" id="soldout">SOLD OUT</button></td>
+                            <td> <button type="button" id="love_porduct">관심상품</button></td>
+                        </tr>
+
+                </table>
+                   
+            </div>
+        <div id="blank_box">
+            <table class="product_img">
+                <tr>
+                    <td style="font-size: 18px; text-align:center; width: 1200px;border: none;">상세정보</td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail1.jpg"></td>    
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail2.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail3.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail4.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail5.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail6.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img style="width: 80%;" src="../img/detail7.jpg"></td>
+                </tr>
+            </table>
+        </div>
+        
+           <div class="buy_terms">
+            <table>
+                <tr>
+                    <td>상품결제정보</td>
+                </tr>
+
+                <tr>
+                    <td>고액결제의 경우 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다. 확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을 보류 또는 취소할 수 있습니다.
+                        무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은 가까운 은행에서 직접 입금하시면 됩니다.
+                        주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 7일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>배송정보</td>
+                </tr>
+                <tr>
+                    <td>배송 방법 : 택배<br>
+                    배송 지역 : 전국지역<br>
+                    배송 비용 : 3,000원<br>
+                    배송 기간 : 3일 ~ 7일<br>
+                    배송 안내 : - 산간벽지나 도서지방은 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.<br>
+                    고객님께서 주문하신 상품은 입금 확인후 배송해 드립니다. 다만, 상품종류에 따라서 상품의 배송이 다소 지연될 수 있습니다.</td>
+                </tr>
+
+                <tr>
+                    <td>교환 및 반품정보</td>
+                </tr>
+                <tr>
+                    <td>교환 및 반품 주소<br>
+                    - [15807] 경기도 군포시 엘에스로182번길 34-18 (산본동) 2층</td>
+                </tr>
+
+                <tr>
+                    <td>교환 및 반품이 가능한 경우</td>
+                </tr>
+                <tr>
+                    <td>- 계약내용에 관한 서면을 받은 날부터 7일. 단, 그 서면을 받은 때보다 재화등의 공급이 늦게 이루어진 경우에는 재화등을 공급받거나 재화등의 공급이 시작된 날부터 7일 이내<p/>
+                - 공급받으신 상품 및 용역의 내용이 표시.광고 내용과 다르거나 계약내용과 다르게 이행된 때에는 당해 재화 등을 공급받은 날 부터 3월이내, 그사실을 알게 된 날 또는 알 수 있었던 날부터 30일이내</td></tr>
+                <tr>
+                    <td>교환 및 반품이 불가능한 경우<p/>
+                    - 이용자에게 책임 있는 사유로 재화 등이 멸실 또는 훼손된 경우(다만, 재화 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우에는 청약철회를 할 수 있습니다)<p />
+                    - 이용자의 사용 또는 일부 소비에 의하여 재화 등의 가치가 현저히 감소한 경우<p />
+                    - 시간의 경과에 의하여 재판매가 곤란할 정도로 재화등의 가치가 현저히 감소한 경우<p />
+                    - 복제가 가능한 재화등의 포장을 훼손한 경우</td>
+                </tr>
+            </table>
+           </div>
+
+            <div class="review_table">
+                <table>
+                    <tr>
+                        <td>ITEM REVIEW</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 11px; border: none;">문의글 혹은 악의적인 비방글은 무통보 삭제 될 수 있는점 유의해주세요</td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-size: 10px;">-깃털이 생각한것보다 커서 놀랐긴 한데 길쭉해서 놀아주기엔 편합니다. 저희 고양이는 보자마자 흥분하더니 ...</td>
+                    </tr>
+                    <tr>
+                        <td>깃털이 생각한것보다 커서 놀랐긴 한데 길쭉해서 놀아주기엔 편합니다. 저희 고양이는 보자마자 흥분하더니 엄청 좋아했어요. 손잡이도 나름 튼튼하네요.(하지만 방심하면 야옹이한테 언제 깃털이 뜯겨나갈>..</td>
+                    </tr>
+                    <tr>
+                        <td><img  style= "position: relative; top:-10px; left: -30px;" src="../img/리뷰더보기.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img style=" width: 200px;height: 200px;"
+                            src="../img/mycat.jpg"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </div>        
+    </section>
+        <!-- <script>
+            // class, id 속성을 가져와서 변수에 할당
+            var pics = document.getElementsByClassName("pic");
+            var lightbox = document.getElementById("lightbox");
+            var lightboxImage = document.getElementById("lightboxImage");
+
+            // for 루프를 돌리면서 썸네일을 클릭시 showLightbox() 함수를 호출
+            for (var i = 0; i < pics.length; i++) {
+                pics[i].addEventListener("click", showLightbox);
+                // pics 배열의 i번재 요소를 클릭시 showLightbox() 함수를 호출
+            }
+
+            // 섬네일을 클릭시 img 태그의 원본 이미지를 적용하는 함수, 화면에 출력하는 함수
+            function showLightbox() {
+                var biglocation = this.getAttribute("data-src");   //data-src 의 값을 가져와서 biglocation 변수에 할당
+                lightboxImage.setAttribute("src", biglocation);
+                lightbox.style.display = "block";      /*화면에 출력되도록 설정 : none => block*/
+
+            }
+
+            // 출력된 화면을 클릭시 다시 원래대로 되돌리는 함수
+            lightbox.onclick = function () {
+                lightbox.style.display = "none";
+            }
+        </script> -->
+    </div>
+</div>
+</th:block>
+</body>
+
+</html>

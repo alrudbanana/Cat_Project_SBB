@@ -25,7 +25,8 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6' //6->5 (x)
+	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
@@ -33,10 +34,18 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
-	 implementation 'com.mysql:mysql-connector-j'
+	// QueryDSL
+   implementation 'com.querydsl:querydsl-jpa:5.0.0'
+   implementation 'com.querydsl:querydsl-apt:5.0.0'
+   implementation 'com.querydsl:querydsl-core:5.0.0'
+	
+	implementation 'com.mysql:mysql-connector-j'
 	 
 	 //구글로그인
 	 implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+	 
+	 //modelMapper라이브러리 
+	 implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
 	 
 	 
 	
