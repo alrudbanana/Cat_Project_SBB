@@ -11,9 +11,12 @@
             <li><a sec:authorize="isAnonymous()" href="/member/login">로그인</a></li>
             <li><a sec:authorize="isAuthenticated()" href="/member/logout">로그아웃</a></li>
             <li><a a sec:authorize="isAnonymous()" href="member/join">회원가입</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="/admin/item/new">상품등록</a></li>
+            <li><a sec:authorize="isAuthenticated()" href="/member/logout">상품관리</a></li>
             <li><a sec:authorize="isAuthenticated()" href="#">장바구니</a></li>
             <li><a sec:authorize="isAuthenticated()" href="#">주문조회</a></li>
             <li><a sec:authorize="isAuthenticated()" href="#">마이페이지</a></li>
+            
         </ul>
     </div>
 

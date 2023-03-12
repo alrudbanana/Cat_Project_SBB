@@ -35,10 +35,18 @@ dependencies {
 	
 	 implementation 'com.mysql:mysql-connector-j'
 	 
+	 // QueryDSL
+	 implementation 'com.querydsl:querydsl-jpa:5.0.0'
+	 implementation 'com.querydsl:querydsl-apt:5.0.0'
+	 implementation 'com.querydsl:querydsl-core:5.0.0' // 한개 더 추가!
+	 annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jpa")//어노테이션 추가 
+	 
 	 //구글로그인
 	 implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
-	 
-	 
+	 //javax : spring boot 2.3 이상에서 사용 설정 
+	 implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.4' 
+	 //modelMapper
+	 implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
 	
 }
 

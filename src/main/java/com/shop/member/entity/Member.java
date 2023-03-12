@@ -1,6 +1,8 @@
 package com.shop.member.entity;
 
 
+import com.shop.BaseEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ import lombok.Setter;
 @Getter @Setter
 @Table(name = "member")
 @Entity
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
