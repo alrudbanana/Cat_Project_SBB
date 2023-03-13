@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+      
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품등록</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<style>
+.container{
+margin: 0 auto;
+display: flex;
+justify-content: center;
+}
+section{
+width: 1200px;  
+}
+
+.line{
+width: 100%;
+border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+}
+.tittle_p{
+padding: 60px;
+position: relative;
+}
+.mini_menu{
+    position: absolute;
+    top: 10px; right: -10px;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.item_total_nav a:hover{
+color: gray;
+}
+.toy_tittle{
+    text-align: center;
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.toy_select{
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    padding-top:35px;
+    width: 1200px;
+    height: 70px;
+}
+
+.toy_select > div{
+    display: inline-block;
+}
+
+.toy_1{
+border: 1px solid rgba(128, 128, 128, 0.4);
+margin-left: 8px;
+width: 200px;
+padding: 10px;
+}
+
+.toy_1:hover{
+    background-color: rgba(192, 192, 192,0.3);
+}
+.item_total_nav{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.item_total_nav > div{
+    display: inline;
+    margin-right: 10px;
+    float: right;
+    padding-right: 10px;
+    border-right: 1px solid rgba(128, 128, 128, 0.4);
+}
+.nav_name > a{
+    font-size: 11px;
+}
+
+/*테이블 속성값*/
+
+.item_list img {
+    width: 280px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.item_list tr td{
+    padding: 3px;
+    padding-right: 20px;
+
+}
+
+.price{
+    color: rgb(46, 164, 211);
+}
+
+
+
+
+    </style>
+
+</head>
+<link th:href="@{css/index.css}" rel="stylesheet">
+
+
+<body>
+
+<div layout:fragment="content">
+<body>
+    <div class="line">&nbsp;</div>
+  <div class="container">
+    <section class="top_pro_tittle">
+
+        <div class="tittle_p">
+            <div class="mini_menu">홈  >  장난감  >  막대장난감</div>
+            <div class="toy_tittle">막대장난감</div>
+        </div>
+
+        <div class="toy_select">
+            <div class="toy_1">· 막대장난감</div>
+            <div class="toy_1">· 리필장난감</div>
+            <div class="toy_1">· 자동장난감</div>
+            <div class="toy_1">· 기타장난감</div>
+            <div class="toy_1">· 캣닢,마따따비</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 12px;">
+            <span>- Total <span style="color: red; font-weight: 800;">32</span> Items</span>
+        </div>
+        
+        <div class="item_total_nav">
+            <div class="nav_name"><a href="#">신상품</a></div>
+            <div class="nav_name"><a href="#">상품명</a></div>
+            <div class="nav_name"><a href="#">낮은가격</a></div>
+            <div class="nav_name"><a href="#">높은가격</a></div>
+            <div class="nav_name"><a href="#">제조사</a></div>
+            <div class="nav_name"><a href="#">사용후기</a></div>
+        </div>
+
+        <table class="item_list">
+            <tr>
+                <td><img src="../img/toy1.jpg"></td>
+                <td><img src="../img/toy2.jpg"></td>
+                <td><img src="../img/toy3.jpg"></td>
+                <td><img src="../img/toy4.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy5.jpg"></td>
+                <td><img src="../img/toy6.jpg"></td>
+                <td><img src="../img/toy7.jpg"></td>
+                <td><img src="../img/toy8.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy9.jpg"></td>
+                <td><img src="../img/toy10.jpg"></td>
+                <td><img src="../img/toy11.jpg"></td>
+                <td><img src="../img/toy12.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy13.jpg"></td>
+                <td><img src="../img/toy14.jpg"></td>
+                <td><img src="../img/toy15.jpg"></td>
+                <td><img src="../img/toy16.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy17.jpg"></td>
+                <td><img src="../img/toy18.jpg"></td>
+                <td><img src="../img/toy19.jpg"></td>
+                <td><img src="../img/toy20.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy21.jpg"></td>
+                <td><img src="../img/toy22.jpg"></td>
+                <td><img src="../img/toy23.jpg"></td>
+                <td><img src="../img/toy24.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        <table class="item_list" style="margin-top: 50px;">
+            <tr>
+                <td><img src="../img/toy25.jpg"></td>
+                <td><img src="../img/toy26.jpg"></td>
+                <td><img src="../img/toy27.jpg"></td>
+                <td><img src="../img/toy28.jpg"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+                <td style="font-size: 12px">자체브랜드</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 플라이꿩 고양이가 좋아하는 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 닭나방 고양이 장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 라푼젤 고양이장난감</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128,0.2);">쥬아펫 은하수스틱 2단낚시대 길이조절<br> 가능 장난감 (4 color)</td>
+            </tr>
+            <tr>
+                <td class="price">3900원</td>
+                <td class="price">7700원</td>
+                <td class="price">8000원</td>
+                <td class="price">3500원</td>
+            </tr>
+            <tr>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+                <td>사용후기</td>
+            </tr>
+        
+        </table>
+
+        
+    </section>
+
+    
+
+    
+  </div>
+
+
+</th:block>
+</body>
+</html>
+</html>

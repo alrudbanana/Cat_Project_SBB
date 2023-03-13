@@ -2,11 +2,15 @@ package com.shop.item.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import com.shop.item.dto.ItemFormDto;
 import com.shop.item.dto.ItemImgDto;
+import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.entity.ItemImg;
 import com.shop.item.repository.ItemImgRepository;
@@ -76,4 +80,10 @@ public class ItemService {
 
 	        return item.getId();
 	    }
+	 
+	 @Transactional(readOnly = true)
+	    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+	        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+	    }
+
 }

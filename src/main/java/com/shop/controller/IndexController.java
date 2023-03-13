@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	//홈
 	
-//		@RequestMapping(value = "/")
-//		public String index() {
-//			
-//			return "index";
-//		}
+		@RequestMapping(value = "/ItemList")
+		public String index() {
+			
+			return "item/ItemList";
+		}
 
 //	
 //		@RequestMapping(value = "/member/community")
