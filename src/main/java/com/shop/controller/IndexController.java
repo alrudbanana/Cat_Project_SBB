@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 	//홈
-	
+//	
 		@RequestMapping(value = "/ItemList")
 		public String index() {
 			
-			return "item/ItemList";
+			return "item/ItemMng";
 		}
 
 //	

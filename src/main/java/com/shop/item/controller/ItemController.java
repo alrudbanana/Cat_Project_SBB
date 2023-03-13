@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.shop.item.dto.ItemFormDto;
+import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.service.ItemService;
 
@@ -57,7 +58,7 @@ public class ItemController {
 	            return "item/itemForm";
 	        }
 
-	        return "redirect:/item/ItemList";
+	        return "redirect:/";
 	    }
 	 
 	 //상세보기 메소드
@@ -98,11 +99,17 @@ public class ItemController {
 
 	        return "redirect:/";
 	    }
-	  @GetMapping("/item/itemlist")
-	    public String items(Model model){
-	        List<Item> itemList = itemService.itemList();
-	        model.addAttribute("itemlist",itemList);
-	        return "/item/ItemList";
+	  
+	  @GetMapping(value = {"/admin/items", "/admin/items/{page}"}) //페이지 번호가 없는 경우와 있는 경우 두가지 맵핑
+	    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+	        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() :  0, 10); //한 페이지당 10개씩 상품을 보여줌 
+	        Page<Item> items = 
+	        		itemService.getAdminItemPage(itemSearchDto, pageable);
+	        model.addAttribute("items", items);
+	        model.addAttribute("itemSearchDto", itemSearchDto);
+	        model.addAttribute("maxPage", 5);
+
+	        return "item/itemMng";
 	    }
 
 }

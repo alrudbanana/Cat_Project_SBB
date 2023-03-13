@@ -2,7 +2,7 @@ package com.shop.item.entity;
 
 
 import com.shop.BaseEntity;
-import com.shop.item.ItemSellStatus;
+import com.shop.constant.ItemSellStatus;
 import com.shop.item.dto.ItemFormDto;
 
 import jakarta.persistence.Column;

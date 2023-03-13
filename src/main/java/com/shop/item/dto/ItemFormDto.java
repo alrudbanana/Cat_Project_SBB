@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 
-import com.shop.item.ItemSellStatus;
+import com.shop.constant.ItemSellStatus;
 import com.shop.item.entity.Item;
 
 import jakarta.validation.constraints.NotBlank;

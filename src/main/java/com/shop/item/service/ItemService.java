@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.shop.board.Board;
 import com.shop.item.dto.ItemFormDto;
 import com.shop.item.dto.ItemImgDto;
+import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.entity.ItemImg;
 import com.shop.item.repository.ItemImgRepository;
@@ -34,7 +35,6 @@ public class ItemService {
         //상품 등록
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
-        
        
         //이미지 등록
         for(int i=0;i<itemImgFileList.size();i++){
@@ -84,13 +84,10 @@ public class ItemService {
 
 	        return item.getId();
 	    }
-	 //전체 상품 목록 조회 
-	 public List<Item> itemList(){
-	        return itemRepository.findAll();
-	    }
-	 //특정 상품 조회 
-	    public Item itemView(Long id){
-	        return itemRepository.findById(id).get();
-	    }
-	    
+	 
+	//상품데이터 조회 메소드 추가 (*데이터의 수정이 일어나지 않으므로 읽기전용)
+	 @Transactional(readOnly = true)
+	    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+	        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+	    } 
 }
