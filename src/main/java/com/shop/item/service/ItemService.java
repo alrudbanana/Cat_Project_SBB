@@ -1,5 +1,6 @@
 package com.shop.item.service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.shop.board.Board;
 import com.shop.item.dto.ItemFormDto;
 import com.shop.item.dto.ItemImgDto;
-import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.entity.ItemImg;
 import com.shop.item.repository.ItemImgRepository;
@@ -27,12 +29,13 @@ public class ItemService {
 	private final ItemRepository itemRepository;
 	private final ItemImgService itemImgService; //이미지 정보를 저장 
 	private final ItemImgRepository itemImgRepository; 
-	
+	 
 	public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
         //상품 등록
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
-
+        
+       
         //이미지 등록
         for(int i=0;i<itemImgFileList.size();i++){
             ItemImg itemImg = new ItemImg();
@@ -49,6 +52,7 @@ public class ItemService {
         return item.getId();
     }
 	
+	//수정메소드
 	@Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId){
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
@@ -80,10 +84,13 @@ public class ItemService {
 
 	        return item.getId();
 	    }
-	 
-	 @Transactional(readOnly = true)
-	    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
-	        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+	 //전체 상품 목록 조회 
+	 public List<Item> itemList(){
+	        return itemRepository.findAll();
 	    }
-
+	 //특정 상품 조회 
+	    public Item itemView(Long id){
+	        return itemRepository.findById(id).get();
+	    }
+	    
 }

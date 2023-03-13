@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.shop.item.dto.ItemFormDto;
-import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.service.ItemService;
 
@@ -27,14 +27,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class ItemController {
-	private final ItemService itemService;
 	
+	private final ItemService itemService;
+	//상품등록 폼 전달 
 	@GetMapping(value = "/admin/item/new")
     public String itemForm(Model model){
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/itemForm";
 	}
 	
+	//상품 등록 처리 
 	 @PostMapping(value = "/admin/item/new")
 	    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
 	                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
@@ -55,9 +57,10 @@ public class ItemController {
 	            return "item/itemForm";
 	        }
 
-	        return "redirect:/";
+	        return "redirect:/item/ItemList";
 	    }
 	 
+	 //상세보기 메소드
 	  @GetMapping(value = "/admin/item/{itemId}")
 	    public String itemDtl(@PathVariable("itemId") Long itemId, Model model){
 
@@ -73,6 +76,7 @@ public class ItemController {
 	        return "item/itemForm";
 	    }
 	  
+	  //수정하기 
 	  @PostMapping(value = "/admin/item/{itemId}")
 	    public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
 	                             @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
@@ -94,19 +98,11 @@ public class ItemController {
 
 	        return "redirect:/";
 	    }
-	  
-	  //아이템 페이징 객체 
-	  @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-	    public String itemManage(ItemSearchDto  itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
-
-	        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-	        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
-
-	        model.addAttribute("items", items);
-	        model.addAttribute("itemSearchDto", itemSearchDto);
-	        model.addAttribute("maxPage", 5);
-
-	        return "item/itemMng";
+	  @GetMapping("/item/itemlist")
+	    public String items(Model model){
+	        List<Item> itemList = itemService.itemList();
+	        model.addAttribute("itemlist",itemList);
+	        return "/item/ItemList";
 	    }
 
 }

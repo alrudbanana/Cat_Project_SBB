@@ -115,19 +115,21 @@ padding: 10px;
 <body>
     <div class="line">&nbsp;</div>
   <div class="container">
+  
+  
     <section class="top_pro_tittle">
 
         <div class="tittle_p">
             <div class="mini_menu">홈  >  장난감  >  막대장난감</div>
             <div class="toy_tittle">막대장난감</div>
         </div>
-
+<form th:action="@{/item/new}" method="get" th:object="${item}">
         <div class="toy_select">
-            <div class="toy_1">· 막대장난감</div>
-            <div class="toy_1">· 리필장난감</div>
-            <div class="toy_1">· 자동장난감</div>
-            <div class="toy_1">· 기타장난감</div>
-            <div class="toy_1">· 캣닢,마따따비</div>
+            <div class="toy_1" id="itemNm">· 막대장난감</div>
+            <div class="toy_1" id="itemNm">· 리필장난감</div>
+            <div class="toy_1" id="itemNm">· 자동장난감</div>
+            <div class="toy_1" id="itemNm">· 기타장난감</div>
+            <div class="toy_1" id="itemNm">· 캣닢,마따따비</div>
         </div>
         <div style="margin-top: 10px; font-size: 12px;">
             <span>- Total <span style="color: red; font-weight: 800;">32</span> Items</span>
@@ -379,7 +381,7 @@ padding: 10px;
             </tr>
         
         </table>
-
+</form>
         
     </section>
 
