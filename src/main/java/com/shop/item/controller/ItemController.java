@@ -20,6 +20,7 @@ import com.shop.item.dto.ItemFormDto;
 import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.service.ItemService;
+import com.shop.mainitem.MainItemDto;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -34,7 +35,7 @@ public class ItemController {
 	@GetMapping(value = "/admin/item/new")
     public String itemForm(Model model){
         model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/itemForm";
+        return "item/ItemForm";
 	}
 	
 	//상품 등록 처리 
@@ -43,19 +44,19 @@ public class ItemController {
 	                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
 
 	        if(bindingResult.hasErrors()){
-	            return "item/itemForm";
+	            return "item/ItemForm";
 	        }
 
 	        if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
 	            model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-	            return "item/itemForm";
+	            return "item/ItemForm";
 	        }
 
 	        try {
 	            itemService.saveItem(itemFormDto, itemImgFileList);
 	        } catch (Exception e){
 	            model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
-	            return "item/itemForm";
+	            return "item/ItemForm";
 	        }
 
 	        return "redirect:/";
@@ -112,6 +113,17 @@ public class ItemController {
 	        return "item/itemMng";
 	    }
 
+	  	//상품리스트로 들어감
+	      @GetMapping(value = "item/ItemList")
+	      public String main(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+	          Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 8);
+	          Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
+	          model.addAttribute("items", items);
+	          model.addAttribute("itemSearchDto", itemSearchDto);
+	          model.addAttribute("maxPage", 5);
+
+	          return "item/ItemList";
+	      }
 }
 
 

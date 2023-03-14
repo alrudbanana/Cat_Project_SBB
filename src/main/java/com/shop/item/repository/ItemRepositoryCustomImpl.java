@@ -14,6 +14,10 @@ import com.shop.constant.ItemSellStatus;
 import com.shop.item.dto.ItemSearchDto;
 import com.shop.item.entity.Item;
 import com.shop.item.entity.QItem;
+import com.shop.item.entity.QItemImg;
+import com.shop.mainitem.MainItemDto;
+import com.shop.mainitem.QMainItemDto;
+
 import jakarta.persistence.EntityManager;
 
 
@@ -79,4 +83,49 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return new PageImpl<>(content, pageable, total);//page구현체로 반환
     }
 
+
+	//아이템 Main
+    private BooleanExpression itemNmLike(String searchQuery) {
+        return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
+    }
+
+    @Override
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        QItem item = QItem.item;
+        QItemImg itemImg = QItemImg.itemImg;
+
+        List<MainItemDto> content = queryFactory
+                .select(
+                    new QMainItemDto(
+                        item.id,
+                        item.itemNm,
+                        item.itemDetail,
+                        itemImg.imgUrl,
+                        item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"),
+                        itemNmLike(itemSearchDto.getSearchQuery()))
+                .orderBy(item.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long total = queryFactory
+                .select(item.count())
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"),
+                        itemNmLike(itemSearchDto.getSearchQuery()))
+                .fetchOne();
+
+        return new PageImpl<>(content, pageable, total);
+
+    }
+
+    
+   
+    
+    
 }

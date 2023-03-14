@@ -2,10 +2,13 @@ package com.shop.mainitem;
 
 import com.querydsl.core.annotations.QueryProjection;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Data
+@NoArgsConstructor
 public class MainItemDto {
 	private Long id;
 	private String itemNm;

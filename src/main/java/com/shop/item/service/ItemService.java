@@ -18,6 +18,7 @@ import com.shop.item.entity.Item;
 import com.shop.item.entity.ItemImg;
 import com.shop.item.repository.ItemImgRepository;
 import com.shop.item.repository.ItemRepository;
+import com.shop.mainitem.MainItemDto;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -90,4 +91,10 @@ public class ItemService {
 	    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
 	        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
 	    } 
+	 
+	 //메인아이템 조회 메소드 
+	 @Transactional(readOnly = true)
+	    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+	        return itemRepository.getMainItemPage(itemSearchDto, pageable);
+	    }
 }
